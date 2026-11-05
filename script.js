@@ -15,6 +15,26 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 }));
 document.getElementById('year').textContent = new Date().getFullYear();
 
+
+// Clique nos cards: preenche o serviço e navega suavemente para o orçamento.
+const serviceSelect = document.getElementById('type');
+const contactSection = document.getElementById('contato');
+document.querySelectorAll('.service-card[data-service]').forEach(card => {
+  card.addEventListener('click', event => {
+    const chosenService = card.dataset.service;
+    const exists = [...serviceSelect.options].some(option => option.value === chosenService);
+    if (!exists) return;
+    event.preventDefault();
+    serviceSelect.value = chosenService;
+    serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    serviceSelect.classList.add('service-selected');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    contactSection.scrollIntoView({ behavior: prefersReducedMotion ? 'instant' : 'smooth', block: 'start' });
+    if (window.location.hash !== '#contato') window.history.replaceState(null, '', '#contato');
+  });
+});
+serviceSelect.addEventListener('change', () => serviceSelect.classList.remove('service-selected'));
+
 document.getElementById('leadForm').addEventListener('submit', async event => {
   event.preventDefault();
   const name = document.getElementById('name').value.trim();
