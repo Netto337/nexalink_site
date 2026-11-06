@@ -19,3 +19,94 @@
 #type.service-selected{border-color:#008fe9;box-shadow:0 0 0 3px #008cf026}
 @media(max-width:720px){.about-visual>img{width:clamp(150px,53%,205px);max-height:70%}.brand img{width:40px;height:40px}#contato{scroll-margin-top:75px}}
 @media(prefers-reduced-motion:reduce){.service-card:hover,.service-card:focus-visible{transform:none}}
+
+/* Refinamento visual 2026-11: marca objetiva, navegação sem emojis e hero responsivo */
+.hero h1 {max-width:720px;font-size:clamp(40px,4.75vw,64px);letter-spacing:-2.9px;line-height:1.12}
+.hero h1 em {display:inline-block}
+.hero-copy>p {max-width:600px}
+.hero-trust {margin-top:30px;gap:11px 18px;align-items:flex-start}
+.hero-trust span {display:inline-flex;align-items:flex-start;gap:8px;font-size:11px;line-height:1.55;color:#c4d7ed}
+.hero-trust span::before {content:"";display:inline-block;flex:none;width:6px;height:6px;margin-top:5px;border-radius:2px;background:#00ccec;box-shadow:0 0 8px #00ccec55}
+.hero-trust span::first-letter {color:inherit}
+.service-icon svg {width:28px;height:28px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+.float-tag {font-size:10px;font-weight:700;letter-spacing:1.1px;padding:11px 13px}
+.service-card::after{content:"Ver orçamento";display:block;font-size:11px;font-weight:700;color:#0076df;margin-top:18px;letter-spacing:.2px}
+.service-card:hover::after,.service-card:focus-visible::after{text-decoration:underline;text-underline-offset:3px}
+.contact-meta .contact-location {display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.contact-meta .contact-location::before {content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#00d4ff;box-shadow:0 0 0 4px #00d4ff24}
+.contact-meta small {margin-left:18px}
+.form-submit {min-height:50px}
+.nav-cta,.btn {letter-spacing:.1px}
+@media(max-width:720px){
+ .hero-grid {gap:26px;padding:46px 0 55px}
+ .hero h1 {font-size:clamp(35px,9.1vw,50px);letter-spacing:-1.95px;line-height:1.17;margin:24px 0 17px}
+ .hero h1 em {display:inline}
+ .hero-copy>p {font-size:14px;line-height:1.75}
+ .eyebrow {font-size:9px;letter-spacing:1.7px;max-width:100%;line-height:1.5}
+ .actions {gap:10px;margin-top:26px}
+ .actions .btn {padding:14px 16px;font-size:12px;gap:8px}
+ .hero-trust {display:grid;grid-template-columns:1fr;gap:9px;margin-top:27px}
+ .hero-trust span {font-size:12px}
+ .hero-art {min-height:370px;margin-top:3px;overflow:visible}
+ .hero-glass {width:min(300px,78vw);padding:22px;min-height:330px}
+ .hero-glass img {width:154px;height:154px}
+ .hero-art-orbit {width:min(340px,94vw);height:min(340px,94vw)}
+ .orbit-two {width:min(260px,73vw);height:min(260px,73vw)}
+ .top-tag {top:15px;right:0}
+ .bottom-tag {left:0;bottom:18px}
+ .float-tag {font-size:9px;letter-spacing:.6px;padding:10px}
+ .card-top {font-size:8px;letter-spacing:1.1px}
+ .hero-glass strong {font-size:9px;letter-spacing:1px;text-align:center}
+ .service-card {min-height:0}
+}
+@media(max-width:390px){
+ .hero h1 {font-size:35px}
+ .hero-art {min-height:340px}
+ .hero-glass {min-height:315px;width:76vw}
+ .hero-glass img {width:136px;height:136px}
+ .float-tag {font-size:8px;padding:8px}
+ .actions .btn {padding:13px 14px;font-size:11px}
+}
+
+.form-note[hidden]{display:none!important}
+
+/* Movimento leve dos selos no destaque principal, sem alterar o layout. */
+.hero-art .float-tag {
+  will-change: transform;
+  pointer-events: none;
+  box-shadow: 0 12px 28px #0005, 0 0 16px #007bff15;
+}
+.hero-art .top-tag { animation: nexaFloatNetwork 6.4s ease-in-out infinite; }
+.hero-art .bottom-tag { animation: nexaFloatInfra 7.1s ease-in-out infinite; }
+@keyframes nexaFloatNetwork {
+  0%, 100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(-7px,-9px,0); }
+}
+@keyframes nexaFloatInfra {
+  0%, 100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(8px,7px,0); }
+}
+@media(max-width:720px) {
+  .hero-art .top-tag { right:2px; top:8px; }
+  .hero-art .bottom-tag { left:2px; bottom:8px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-art .float-tag { animation:none!important; will-change:auto; }
+}
+
+/* Resultados práticos em cada serviço, mantendo a leitura clara e alinhada. */
+.service-card .service-impact{min-height:0;margin-top:0;margin-bottom:22px;padding-top:12px;border-top:1px solid #e8f0fa;color:#49647f;line-height:1.7;font-size:12px}
+.service-card .service-impact strong{color:#0b4f96}
+.service-card p:not(.service-impact){min-height:0}
+.service-card .service-tags{margin-top:auto}
+
+/* Benefícios claros, sem sobrecarregar os cards */
+.service-card p{min-height:0!important;margin-bottom:12px}
+.service-card .service-impact{margin:0 0 10px;padding:0;border:0;font-size:12px;line-height:1.7}
+.service-card .service-impact strong{color:#0b4f96}
+.service-card .service-tags{padding-top:14px}
+/* Mensagens discretas abaixo do campo inválido. */
+.contact-card .field-error{margin:0 0 5px!important;color:#b32934!important;font-size:12px!important;line-height:1.45!important}
+.contact-card .field-error[hidden]{display:none!important}
+.contact-card [aria-invalid="true"]{border-color:#cf4451!important;box-shadow:0 0 0 3px #df46551a!important}
+.form-trap{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
